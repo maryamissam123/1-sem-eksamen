@@ -1,21 +1,22 @@
 <form action="/serviceplan/{{plan.id}}" method="POST" class="input-form" enctype="multipart/form-data">
 
+ {{!-- Required til input felter--}}
     <div class="form-group">
         <label for="serviceplan_done_at">Dato for udførelse</label>
         <input type="date" name="serviceplan_done_at" value="{{defaultDate}}" required>
     </div>
-
     <div class="form-group">
         <label for="">Påfyldning</label>
             <div id="fill-row">
-                <select name="product[]" class="product-select">
+                <select name="product[]" class="product-select" required>
                     <option value="">Vælg produkt</option>
                     {{#each products}}
                     <option value="{{id}}">{{products_name}}</option>
                     {{/each}}
                 </select>
 
-                <input type="number" name="quantity[]" class="quantity-input" placeholder="Mængde" min="0">
+{{!-- en min="1" --}}
+                <input type="number" name="quantity[]" class="quantity-input" placeholder="Mængde" min="1" required>
 
                 <select name="unit[]" class="unit-select">
                     <option value="">Vælg enhed</option>
@@ -31,11 +32,12 @@
             <label>Før billede</label>
 
                 <div class="upload-area">
-                    <input type="file" name="before_image" id="before_image" accept="image/*" multiple>
+                    <input type="file" name="before_image" id="before_image" accept="image/*" multiple required>
                         <div class="upload-content">
                             <div class="camera-icon"><i data-lucide="camera"></i></div>
                             <button type="button" class="upload-btn">TAG FOTO ELLER UPLOAD</button>
-                            <small>Tilføj så mange billeder du vil</small>
+                            {{!-- p-tag med class --}}
+                            <p class="helper-text">Tilføj mindst en billede her</p>
                         </div>
                 </div>
 
@@ -45,18 +47,20 @@
         <div class="form-group">
             <label>Efter billede</label>
                 <div class="upload-area">
-                    <input type="file" name="after_image" id="after_image" accept="image/*" multiple>
+                    <input type="file" name="after_image" id="after_image" accept="image/*" multiple required>
                         <div class="upload-content">
                             <div class="camera-icon"><i data-lucide="camera"></i></div>
                             <button type="button" class="upload-btn">TAG FOTO ELLER UPLOAD</button>
-                            <small>Tilføj så mange billeder du vil</small>
+                            {{!-- p-tag med class --}}
+                            <p class="helper-text">Tilføj mindst en billede her</p>
                         </div>
                 </div>
                 <div id="after-preview" class="preview-row"></div>
         </div>
     </div>
     <div class="submit-row">
-    <button type="submit" class="submit-btn">Bekræft upload</button>
+{{!-- id="submitBtn" og disabled--}}
+    <button type="submit" id="submitBtn" class="submit-btn" disabled>Bekræft upload</button> 
 </div>
 
 </form>

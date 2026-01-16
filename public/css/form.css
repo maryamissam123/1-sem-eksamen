@@ -25,10 +25,20 @@
     background-color: #F8FAFB;
     border: 1px solid #E2E2E2;
     border-radius: 5px;
-    color: #7F7F7F;
+    color: #2a2a2a;
 }
 
-
+/* text styling for foto */
+.helper-text {
+    font-size: 1rem;       
+    color: #000000;        
+    font-weight: 600;    
+    margin-top: 5px;
+    display: block;    
+    padding: 4px;
+    border-radius: 4px;
+}
+ 
 /* Submit */
 
 .submit-row {
@@ -47,6 +57,17 @@
     cursor: pointer;
 }
 
+.submit-btn:disabled {
+    background-color: #ccc; 
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.submit-btn.active {
+    background-color: #28a745; 
+    opacity: 1;
+    cursor: pointer;
+}
 
 /* Desktop */
 

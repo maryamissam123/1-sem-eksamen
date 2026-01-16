@@ -1,5 +1,25 @@
 /* Funktionalitet til serviceplan */
 
+// Aktiver/deaktiver baseret på formularvaliditet 
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.querySelector('.input-form'); 
+    const submitBtn = document.getElementById('submitBtn');
+
+    // Tjek af formularens validitet
+    const checkForm = () => { 
+        if (form.checkValidity()) {
+            submitBtn.disabled = false;
+            submitBtn.classList.add('active'); 
+        } else {
+            submitBtn.disabled = true;
+            submitBtn.classList.remove('active'); 
+        }
+    };
+
+    // genberegning ved inputændringer
+    form.addEventListener('input', checkForm);
+    form.addEventListener('change', checkForm);
+});
 
 /* Dynamiske produkt-rækker */
 document.addEventListener("change", (e) => {
